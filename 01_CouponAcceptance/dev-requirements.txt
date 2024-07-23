@@ -1,0 +1,13 @@
+autopep8
+pandas
+ipykernel
+openpyxl
+numpy
+scikit-learn
+scipy
+matplotlib
+seaborn
+plotly
+nbformat
+ipython
+statsmodels
