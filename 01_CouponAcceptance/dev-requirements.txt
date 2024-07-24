@@ -11,3 +11,4 @@ plotly
 nbformat
 ipython
 statsmodels
+kaleido
