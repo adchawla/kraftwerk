@@ -149,11 +149,30 @@ Following conclusions are made when data is segregated into groups based on Lunc
 | -- | -- |
 |![D](./images/BFLDDestDist.png)|![D](./images/BFNonLDDestDist.png)|
 
+#### Effect of Traveling direction and Expiration Time
+* Default acceptance rate while traveling in the same direction is 63% but this drastically jumps to 81% if the expiration time is 1d.
+* Default acceptance rate while traveling the opposite direction is 73% but this again drastically jumps to 84% if the expiration time is 1d.
+
+| | |
+| -- | -- |
+|![D](./images/BFSDExpDist.png)|![D](./images/BFODExpDist.png)|
+
+#### Effect of Traveling In Group and Age
+* Acceptance rate while traveling in a group is 79% as compared to 64% while traveling alone.
+* But this jumps to 83% if driver is young and traveling with a group.
+
+| | | |
+| -- | -- | -- |
+|![D](./images/BFGroupDist.png)|![D](./images/BFGroupAgeDist.png)|![D](./images/BFGroupYoungDist.png)|
+
+
 ## Conclusions
 1. During Lunch/Dinner hours the acceptance rate is very high.
 2. People at work are not interested in going to budget friendly restaurants for lunch/dinner. Dinner can be because no one is in office by that time and for lunch people might be more inclined towards take outs.
-3. People neither at home or work are very receptacle to coupons irrespective of time.
+3. People neither at home or work are very inclined towards using coupons irrespective of time.
 4. People at work shows very less interest for budget-friendly restaurants even during non lunch/dinner hours.
+5. Coupons with expiration of 1d are used more by the drivers.
+6. Young Drivers traveling in a group are more inclined towards coupons.
 
 
 
