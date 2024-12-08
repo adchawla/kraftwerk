@@ -8,3 +8,6 @@ This project utilizes data from the UCI Machine Learning Repository, collected v
 
 ## 02_WhatDrivesPriceOfCar
 This project explored a dataset from kaggle. The original dataset contained information on 3 million used cars. The used dataset contains information on 426K cars to ensure speed of processing.  The goal was to understand what factors make a car more or less expensive.  As a result of conducted analysis, a detailed recommendation was generated for the the client of such a study -- a used car dealership -- as to what consumers value in a used car.
+
+## 03_ComparingClassifiers
+This project analyzed customer data and predicted whether a client will subscribe to a term deposit (`yes` or `no`) using machine learning models. The goal was to evaluate and optimize the performance of four models: K-Nearest Neighbors (KNN), Decision Trees, Logistic Regression, and Support Vector Machines (SVM).
