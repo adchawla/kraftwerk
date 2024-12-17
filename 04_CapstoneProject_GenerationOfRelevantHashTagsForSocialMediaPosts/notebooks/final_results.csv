@@ -1,0 +1,8 @@
+Model,Best Parameters,Training Score,Test Score,Mean Fit Time,Mean Test Time
+Logistic Regression,"{'classifier__estimator__C': 10, 'classifier__estimator__solver': 'saga', 'vectorizer__max_features': None, 'vectorizer__method': 'tfidf', 'vectorizer__stop_words': 'english'}",0.5743243243243243,0.5803571428571429,0.11580412586530049,0.0031437531665519432
+Decision Tree,"{'classifier__max_depth': None, 'classifier__min_samples_split': 10, 'vectorizer__max_features': None, 'vectorizer__method': 'count', 'vectorizer__stop_words': None}",0.48423423423423423,0.5357142857142857,0.0073255979352527196,0.0021729436185624865
+KNN,"{'classifier__n_neighbors': 5, 'classifier__weights': 'distance', 'vectorizer__max_features': None, 'vectorizer__method': 'tfidf', 'vectorizer__stop_words': 'english'}",0.5427927927927928,0.5892857142857143,0.005006716207221702,0.0036351305467111094
+Naive Bayes,"{'classifier__alpha': 0.1, 'vectorizer__max_features': None, 'vectorizer__method': 'tfidf', 'vectorizer__stop_words': 'english'}",0.5653153153153153,0.6071428571428571,0.0052716202206081805,0.0020130563665319372
+Logistic Regression (BERT),"{'C': 0.1, 'solver': 'lbfgs'}",0.4121621621621621,0.4642857142857143,3.7263995938830905,0.0016463994979858398
+Decision Tree (BERT),"{'max_depth': None, 'min_samples_split': 5}",0.21396396396396397,0.24107142857142858,0.1980108751191033,0.0014687975247701008
+KNN (BERT),"{'n_neighbors': 3, 'weights': 'distance'}",0.2972972972972973,0.32142857142857145,0.0009315941068861219,0.004831208123101128
