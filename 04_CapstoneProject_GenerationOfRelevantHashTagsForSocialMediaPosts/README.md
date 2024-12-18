@@ -7,7 +7,7 @@
 #### Executive Summary
 This project explores the development of a machine learning pipeline to recommend hashtags for social media posts based on content, with the aim of maximizing engagement. The project was divided into distinct phases, including data collection, preprocessing, and modeling. Trending hashtags were scraped from GetDayTrends, tweets were fetched using the Twitter API, and models were trained to predict hashtags based on post content.
 
-Several machine learning techniques were employed, including Logistic Regression, Decision Tree, K-Nearest Neighbors (KNN), and Naive Bayes, with text representations generated using CountVectorization, TFIDF, and BERT embeddings. Among these, Naive Bayes paired with TFIDF emerged as the best-performing model, achieving high accuracy while maintaining computational efficiency. The results highlight the potential of such systems to enhance social media content visibility and engagement.
+A range of machine learning models, including Logistic Regression, Decision Trees, KNN, Naive Bayes, Voting Classifier, and Random Forest, were tested using **CountVectorization**, **TFIDF**, and **BERT embeddings**. The best performance was observed with the **Naive Bayes** model and **Voting Classifier**, achieving a test accuracy of **67.7%** and **66.7%**, respectively. These results highlight the potential of simpler models when combined with optimized preprocessing and hyperparameter tuning.
 
 Future work can focus on expanding the pipeline to include multimedia inputs, such as images and videos, to provide even more effective recommendations. The project's findings underscore the importance of combining robust preprocessing, advanced modeling techniques, and efficient evaluation frameworks in building practical AI solutions.
 
@@ -41,59 +41,56 @@ How can relevant and effective hashtags be recommended for social media posts ba
     - Adjusted hashtags for consistency.
     - Combined all CSV files into one for modeling purposes.
 
-3. **Data Modeling**:
-   - Trained classifiers (**KNN**, **Logistic Regression**, and **Decision Trees**).
-   - Employed **GridSearchCV** for hyperparameter optimization.
-
-4. **Data Modelling and Evaluation**:
-    - Trained four models (Logistic Regression, Decision Tree, KNN, and Naive Bayes) using CountVectorization and TFIDF techniques.
-    - Trained three additional models (Logistic Regression, Decision Tree, and KNN) using BERT embeddings for textual representation.
-    - Optimized hyperparameters using GridSearchCV.
-    - Evaluated using metrics like accuracy, precision, recall, and F1-score.
+3. **Data Modelling and Evaluation**:
+   - Trained models with **CountVectorization**, **TFIDF**, and **BERT embeddings**:
+     - **Logistic Regression**, **Decision Tree**, **KNN**, and **Naive Bayes**.
+     - Advanced models like **Voting Classifier** and **Random Forest** were added for comparison.
+   - Optimized hyperparameters using **GridSearchCV**.
+   - Evaluated using metrics like accuracy, precision, recall, and F1-score.
 
 ---
 
 #### Results
-- **Model Performance**:
-  - Logistic Regression achieved the highest test score (0.607).
-  - Detailed performance metrics and run times for all models are as follows:
 
-| Model                  | Best Parameters                              | Training Score | Test Score | Mean Fit Time | Mean Test Time |
-|------------------------|----------------------------------------------|----------------|------------|---------------|----------------|
-| Logistic Regression    | {'C': 10, 'solver': 'saga', 'max_features': None, 'method': 'tfidf', 'stop_words': 'english'} | **0.574**         | 0.580      | 0.118         | 0.003          |
-| Decision Tree          | {'max_depth': None, 'min_samples_split': 5, 'max_features': None, 'method': 'count', 'stop_words': 'english'}| 0.491         | 0.562      | 0.008         | 0.002          |
-| K-Nearest Neighbors    | {'n_neighbors': 5, 'weights': 'distance', 'max_features': None, 'method': 'tfidf', 'stop_words': 'english'}              | 0.543         | 0.589      | 0.005         | 0.004          |
-| Naive Bayes           | {'alpha': 0.1, 'max_features': None, 'method': 'tfidf', 'stop_words': 'english'}            | 0.565         | **0.607**      | 0.005         | 0.002          |
-| Logistic Regression (BERT) | {'C': 0.1, 'solver': 'lbfgs'} | 0.412         | 0.464      | 3.727         | 0.002          |
-| Decision Tree (BERT)    | {'max_depth': None, 'min_samples_split': 5} | 0.225         | 0.205      | 0.197         | 0.001          |
-| KNN (BERT)      | {'n_neighbors': 3, 'weights': 'distance'} | 0.297         | 0.321      | 0.001         | 0.018          |  
+| Model                      | Best Parameters                                                                                                    | Training Score | Test Score | Mean Fit Time | Mean Test Time |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------- | ---------- | ------------- | -------------- |
+| Logistic Regression        | {'classifier__estimator__C': 1, 'classifier__estimator__solver': 'lbfgs'}                                          | 0.608          | 0.667      | 0.099         | 0.003          |
+| Decision Tree              | {'classifier__max_depth': None, 'classifier__min_samples_split': 5, 'vectorizer__method': 'count'}                | 0.481          | 0.505      | 0.006         | 0.002          |
+| KNN                        | {'classifier__n_neighbors': 7, 'classifier__weights': 'distance'}                                                  | 0.565          | 0.613      | 0.004         | 0.003          |
+| Naive Bayes                | {'classifier__alpha': 0.1, 'vectorizer__max_features': None, 'vectorizer__method': 'tfidf'}                       | 0.594          | 0.677      | 0.007         | 0.003          |
+| Logistic Regression (BERT) | {'C': 1, 'solver': 'lbfgs'}                                                                                        | 0.414          | 0.495      | 2.951         | 0.001          |
+| Decision Tree (BERT)       | {'max_depth': 30, 'min_samples_split': 2}                                                                         | 0.172          | 0.183      | 0.152         | 0.001          |
+| KNN (BERT)                 | {'n_neighbors': 3, 'weights': 'distance'}                                                                         | 0.304          | 0.301      | 0.001         | 0.004          |
+| Voting Classifier          | {'voting': 'hard', 'weights': (1, 1, 1, 1)}                                                                       | 0.602          | 0.667      | 0.143         | 0.007          |
+| RandomForest Classifier    | {'rf__class_weight': None, 'rf__max_depth': None, 'rf__n_estimators': 100}                                        | 0.599          | 0.602      | 0.089         | 0.006          |
 
----
+#### Best Models: Naive Bayes and Voting Classifier
+- **Naive Bayes** achieved the highest test score of **67.7%**, highlighting its effectiveness in handling text data when combined with **TFIDF vectorization**.
+- **Voting Classifier**, combining predictions from multiple models, matched the performance with a test score of **66.7%**. This demonstrates the strength of ensemble techniques in balancing predictions across classifiers.
 
+The **Random Forest Classifier** also performed competitively, achieving a test score of **60.2%**, while maintaining a balance between accuracy and runtime.
 
-- **Best Model**: Naive Bayes  
-Naive Bayes emerged as the best-performing model, achieving a test score of **0.607** and a training score of **0.565**. This indicates a good balance between generalization and accuracy. The model also demonstrated computational efficiency with minimal runtime during both fitting and testing. The success of Naive Bayes can be attributed to its simplicity and effectiveness in handling high-dimensional data, particularly when paired with the **TFIDF vectorization** technique.
-
-While models using **BERT** embeddings demonstrated lower accuracy, they provide a foundation for future exploration of semantic understanding in text-based data.
+While models using **BERT embeddings** showed lower accuracy (ranging from 18.3% to 49.5%), they provide a foundation for exploring semantic understanding of textual content in future iterations.
 
 ---
 
 #### Next Steps
-- To further enhance the model, the pipeline can be extended to process multimedia content such as images and videos for more comprehensive hashtag recommendations.
-- Additionally, exploring deep learning models like Transformers and CNNs for multimedia data could improve predictive performance.
-- Explore advanced models like Neural Networks and Random Forests for further improvement.
-- Integrate the system into a real-time hashtag recommendation application.
+To further enhance the model:
+1. Incorporate **multimedia data** (e.g., images and videos) to improve hashtag recommendations.
+2. Explore **deep learning techniques** like CNNs, Transformers, and ensemble methods to process multimedia inputs more effectively.
+3. Optimize further with **larger datasets** and additional hyperparameter tuning.
 
 ---
 
 #### Outline of Project
 
-- [Link to notebook 1 (Data Collection)](./notebooks/01_DataCollection.ipynb)
-- [Link to notebook 2 (Data Preprocessing)](./notebooks/02_DataPreprocessing.ipynb)
-- [Link to notebook 3 (Data Modelling and Evaluation)](./notebooks/03_DataModellingAndEvaluation.ipynb)
+- [Data Collection Notebook](./notebooks/01_DataCollection.ipynb)
+- [Data Preprocessing Notebook](./notebooks/02_DataPreprocessing.ipynb)
+- [Data Modelling and Evaluation Notebook](./notebooks/03_DataModellingAndEvaluation.ipynb)
+- [Advanced Data Modelling and Evaluation Notebook](./notebooks/04_AdvancedDataModellingAndEvaluation.ipynb)
 
 ---
 
-##### Contact and Further Information
-For inquiries, please contact **Amandeep Chawla** at [adchawla@gmail.com](mailto:adchawla@gmail.com).
+#### Contact and Further Information
+For inquiries, please contact Amandeep Chawla at [adchawla@gmail.com](mailto\:adchawla@gmail.com).
 
