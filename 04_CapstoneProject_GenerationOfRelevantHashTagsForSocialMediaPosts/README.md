@@ -63,14 +63,23 @@ How can relevant and effective hashtags be recommended for social media posts ba
 | KNN (BERT)                 | {'n_neighbors': 3, 'weights': 'distance'}                                                                         | 0.304          | 0.301      | 0.001         | 0.004          |
 | Voting Classifier          | {'voting': 'hard', 'weights': (1, 1, 1, 1)}                                                                       | 0.602          | 0.667      | 0.143         | 0.007          |
 | RandomForest Classifier    | {'rf__class_weight': None, 'rf__max_depth': None, 'rf__n_estimators': 100}                                        | 0.599          | 0.602      | 0.089         | 0.006          |
+| | | ![image](./notebooks/images/TrainAccuracyPlot.png) | ![image](./notebooks/images/TestAccuracyPlot.png) |![image](./notebooks/images/TrainFitTimePlot.png)|![image](./notebooks/images/TestFitTimePlot.png) |
+| | | | | | |
 
 #### Best Models: Naive Bayes and Voting Classifier
 - **Naive Bayes** achieved the highest test score of **67.7%**, highlighting its effectiveness in handling text data when combined with **TFIDF vectorization**.
 - **Voting Classifier**, combining predictions from multiple models, matched the performance with a test score of **66.7%**. This demonstrates the strength of ensemble techniques in balancing predictions across classifiers.
+- **Logistic Regression**, too achieved a test score of **66.7** highlighting its effectiveness.
 
 The **Random Forest Classifier** also performed competitively, achieving a test score of **60.2%**, while maintaining a balance between accuracy and runtime.
 
 While models using **BERT embeddings** showed lower accuracy (ranging from 18.3% to 49.5%), they provide a foundation for exploring semantic understanding of textual content in future iterations.
+
+#### Confusion Matrices
+| Naive Bayes | Voting Classifier | Logistic Regression |
+| ----------- | ----------------- | ------------------- |
+| ![image](./notebooks/images/cm_nb.png) | ![image](./notebooks/images/cm_vc.png) | ![image](./notebooks/images/cm_lr.png) |
+
 
 ---
 
