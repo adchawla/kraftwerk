@@ -9,7 +9,9 @@ This project explores the development of a machine learning pipeline to recommen
 
 A range of machine learning models, including Logistic Regression, Decision Trees, KNN, Naive Bayes, Voting Classifier, and Random Forest, were tested using **CountVectorization**, **TFIDF**, and **BERT embeddings**. The best performance was observed with the **Naive Bayes** model and **Voting Classifier**, achieving a test accuracy of **67.7%** and **66.7%**, respectively. These results highlight the potential of simpler models when combined with optimized preprocessing and hyperparameter tuning.
 
-Future work can focus on expanding the pipeline to include multimedia inputs, such as images and videos, to provide even more effective recommendations. The project's findings underscore the importance of combining robust preprocessing, advanced modeling techniques, and efficient evaluation frameworks in building practical AI solutions.
+The project's findings underscore the importance of combining robust preprocessing, advanced modeling techniques, and efficient evaluation frameworks in building practical AI solutions.
+
+Future work can focus on expanding the pipeline to include multimedia inputs, such as images and videos, to provide even more effective recommendations.
 
 ---
 
